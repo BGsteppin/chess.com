@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body {
+    font: 13px/1.4 -apple-system, Segoe UI, Roboto, sans-serif;
+    background: #14141a;
+    color: #e8e8ea;
+    margin: 0;
+    padding: 12px;
+    min-width: 240px;
+  }
+  h1 { font-size: 13px; margin: 0 0 10px; color: #7dd3fc; letter-spacing: 0.5px; text-transform: uppercase; }
+  .row { display: flex; align-items: center; justify-content: space-between; margin: 6px 0; gap: 10px; }
+  label { color: #8a8a93; }
+  select, input[type=number] {
+    background: #1e1e26;
+    color: #e8e8ea;
+    border: 1px solid #2a2a33;
+    border-radius: 4px;
+    padding: 3px 6px;
+    font: inherit;
+    width: 110px;
+  }
+  input[type=range] { width: 110px; }
+  input[type=checkbox] { accent-color: #7dd3fc; }
+  .hint { color: #6b6b73; font-size: 11px; margin-top: 10px; }
+</style>
+</head>
+<body>
+<h1>Chess Helper</h1>
+
+<div class="row">
+  <label for="mode">Mode</label>
+  <select id="mode">
+    <option value="off">off</option>
+    <option value="manual">manual (arrows only)</option>
+    <option value="auto">auto-play</option>
+  </select>
+</div>
+
+<div class="row">
+  <label for="depth">Depth</label>
+  <input id="depth" type="number" min="1" max="22" step="1">
+</div>
+
+<div class="row">
+  <label for="useElo">Limit by ELO</label>
+  <input id="useElo" type="checkbox">
+</div>
+
+<div class="row">
+  <label for="elo">Target ELO</label>
+  <input id="elo" type="number" min="1320" max="3190" step="10">
+</div>
+
+<div class="row">
+  <label for="skill">Skill Level</label>
+  <input id="skill" type="range" min="0" max="20" step="1">
+</div>
+
+<div class="hint">manual draws an arrow + shows eval. auto plays the move with humanized mouse motion.</div>
+
+<script src="popup.js"></script>
+</body>
+</html>

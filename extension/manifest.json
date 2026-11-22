@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Chess Helper",
+  "version": "1.0.0",
+  "description": "Local analysis overlay for chess.com.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Chess Helper"
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["*://*.chess.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.chess.com/*"],
+      "js": ["vendor-chess.js", "human.js", "board.js", "overlay.js", "content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["vendor-stockfish.js"],
+      "matches": ["*://*.chess.com/*"]
+    }
+  ]
+}
