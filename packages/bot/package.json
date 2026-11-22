@@ -36,7 +36,6 @@
     "mime-types": "^2.1.24",
     "p-retry": "4.1.0",
     "puppeteer": "^1.18.1",
-    "socker.io": "^0.0.0-alpha-beta",
     "stockfish.js": "^10.0.1",
     "stockfish.wasm": "0.10.0",
     "ts-node": "^8.1.0",
