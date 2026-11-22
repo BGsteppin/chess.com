@@ -7373,6 +7373,15 @@ punycode@^2.1.0, punycode@^2.1.1, punycode@^2.3.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.1.tgz#027422e2faec0b25e1549c3e1bd8309b9133b6e5"
   integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
 
+puppeteer-extra-plugin-stealth@^2.11.2:
+  version "2.11.2"
+  resolved "https://registry.yarnpkg.com/puppeteer-extra-plugin-stealth/-/puppeteer-extra-plugin-stealth-2.11.2.tgz#bd3f5a1781cac8a98c983d148086585a84fcc8f1"
+  integrity sha512-bUemM5XmTj9i2ZerBzsk2AN5is0wHMNE6K0hXBzBXOzP5m5G3Wl0RHhiqKeHToe/uIH8AoZiGhc1tCkLZQPKTQ==
+  dependencies:
+    debug "^4.1.1"
+    puppeteer-extra-plugin "^3.2.3"
+    puppeteer-extra-plugin-user-preferences "^2.4.1"
+
 puppeteer-extra-plugin-user-data-dir@^2.1.2, puppeteer-extra-plugin-user-data-dir@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/puppeteer-extra-plugin-user-data-dir/-/puppeteer-extra-plugin-user-data-dir-2.4.1.tgz#4ea9d56d20455672a54fe086309a102a5126411c"
@@ -7383,7 +7392,7 @@ puppeteer-extra-plugin-user-data-dir@^2.1.2, puppeteer-extra-plugin-user-data-di
     puppeteer-extra-plugin "^3.2.3"
     rimraf "^3.0.2"
 
-puppeteer-extra-plugin-user-preferences@^2.1.2:
+puppeteer-extra-plugin-user-preferences@^2.1.2, puppeteer-extra-plugin-user-preferences@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/puppeteer-extra-plugin-user-preferences/-/puppeteer-extra-plugin-user-preferences-2.4.1.tgz#db8ec63c04a6a10a8f8997e15fdffdf13272161d"
   integrity sha512-i1oAZxRbc1bk8MZufKCruCEC3CCafO9RKMkkodZltI4OqibLFXF3tj6HZ4LZ9C5vCXZjYcDWazgtY69mnmrQ9A==

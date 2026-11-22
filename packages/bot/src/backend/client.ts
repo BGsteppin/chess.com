@@ -3,6 +3,7 @@ import { Context } from './context';
 import { Environment } from '../frontend/environment';
 import * as puppeteer from 'puppeteer-extra';
 import * as ppUserPrefs from 'puppeteer-extra-plugin-user-preferences';
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 import { IClient } from './interfaces/client';
 import { IContextSettings } from '../shared/interfaces/context-settings';
 import { IContext } from './interfaces/context';
@@ -11,6 +12,11 @@ import WebdriverIOAsync = require('webdriverio');
 
 
 declare var window: { __: DI }
+
+// stealth: strips navigator.webdriver, fixes chrome.runtime, patches permissions/plugins,
+// removes HeadlessChrome UA tokens, spoofs WebGL vendor — the usual CDP fingerprints.
+// doesn't change move patterns; that's handled in the frontend mover.
+puppeteer.use(StealthPlugin());
 
 puppeteer.use(ppUserPrefs({
   userPrefs: {
@@ -45,16 +51,19 @@ export class Client implements IClient {
       defaultViewport: null,
       args: [
         '--debug-devtools',
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-web-security',
-        '--allow-running-insecure-content',
         '--disable-notifications',
         '--window-size=1920,1080',
-        '--enable-features=SharedArrayBuffer'
-      ]
-      //slowMo: 500
+        '--enable-features=SharedArrayBuffer',
+        '--disable-blink-features=AutomationControlled',
+        '--lang=en-US,en'
+      ],
+      ignoreDefaultArgs: ['--enable-automation']
     };
+    if (process.env.HEADLESS !== 'true') {
+      // sandboxing on by default in headful; only disable if explicitly asked (CI).
+    } else {
+      launchOpts.args.push('--no-sandbox', '--disable-setuid-sandbox');
+    }
     if (process.env.CHROME_PATH) {
       launchOpts.executablePath = process.env.CHROME_PATH;
     }
