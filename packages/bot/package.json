@@ -16,7 +16,8 @@
     "live": "nodemon -e ts --ignore ./src/backend/main-di.ts --watch './src/backend/**/*.ts' --exec yarn run:live",
     "live:computer": "nodemon -e ts  --watch './src/backend/**/*.ts' --exec yarn build:backend",
     "run:live": "di -d -c ./src/backend/main.ts -- -g komodo",
-    "run:computer": "di -d -c ./src/main.ts -- -g computer"
+    "run:computer": "GAME_TYPE=computer di -d -c ./src/backend/main.ts -- -g computer",
+    "start:computer": "concurrently \"yarn cleanup\" \"nodemon -e ts --ignore ./src/backend/main-di.ts --watch './src/backend/**/*.ts' --exec yarn run:computer\""
   },
   "dependencies": {
     "@overnightjs/core": "^1.6.8",

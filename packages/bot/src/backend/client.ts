@@ -39,11 +39,10 @@ export class Client implements IClient {
   static async connect(): Promise<Client> {
     const client = new Client();
 
-    client.browser = await puppeteer.launch({
-      headless: false,
-      devtools: true,
+    const launchOpts: any = {
+      headless: process.env.HEADLESS === 'true',
+      devtools: process.env.DEVTOOLS !== 'false',
       defaultViewport: null,
-      executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
       args: [
         '--debug-devtools',
         '--no-sandbox',
@@ -55,7 +54,14 @@ export class Client implements IClient {
         '--enable-features=SharedArrayBuffer'
       ]
       //slowMo: 500
-    });
+    };
+    if (process.env.CHROME_PATH) {
+      launchOpts.executablePath = process.env.CHROME_PATH;
+    }
+    if (process.env.USER_DATA_DIR) {
+      launchOpts.userDataDir = process.env.USER_DATA_DIR;
+    }
+    client.browser = await puppeteer.launch(launchOpts);
 
     const pages = await client.browser.pages();
     client.page = pages[0];
