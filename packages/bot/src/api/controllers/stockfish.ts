@@ -10,7 +10,7 @@ import * as fs from 'fs';
 export class StockfishController {
     @Get(':name')
     private getFiles(req: Request, res: Response) {
-        const name = req.params.name;
+        const name = (req.params as { name: string }).name;
         const mimeType = mime.lookup(name);
 
         Logger.Info(`Serving stockfish files: ${name}/${mimeType}`);

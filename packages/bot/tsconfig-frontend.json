@@ -11,7 +11,9 @@
     "outDir": "./dist",
     "baseUrl": "./src",
     "lib": ["es2018", "dom", "dom.iterable", "es6"],
-    "importHelpers": true
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "types": ["node"]
   },
   "exclude": ["node_modules", "**/*.spec.ts","dist"],
   "files": [
